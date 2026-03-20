@@ -9,21 +9,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600;700&family=IBM+Plex+Sans:opsz,wght@6..26,400;6..26,500;6..26,600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0e1825;--panel:#182534;--surface:#1e3044;--rim:#2a3f55;--rim2:#3a5068;
-  --crimson:#990000;--crimson-light:#dc231e;--crimson-dim:rgba(153,0,0,0.12);--crimson-glow:rgba(153,0,0,0.35);
-  --cream:#EEEDEB;--cream-dim:rgba(238,237,235,0.08);
-  --gold:#ffaa00;--gold-dim:rgba(255,170,0,0.10);--gold-glow:rgba(255,170,0,0.28);
-  --red:#e63946;--red-dim:rgba(230,57,70,0.12);
-  --green:#329345;--green-dim:rgba(50,147,69,0.12);
-  --blue:#328bb8;--cyan:rgba(50,139,184,0.08);
-  --muted:#4c5a69;--dim:#142030;--text:#e2e7e9;--text2:#a0abb4;
+  --bg:#EEEDEB;--panel:#ffffff;--surface:#f5f4f2;--rim:#d8d5d0;--rim2:#c0bdb8;
+  --crimson:#990000;--crimson-light:#dc231e;--crimson-dim:rgba(153,0,0,0.07);--crimson-glow:rgba(153,0,0,0.20);
+  --cream:#EEEDEB;--cream-dim:rgba(238,237,235,0.5);
+  --gold:#a36b00;--gold-dim:rgba(163,107,0,0.08);--gold-glow:rgba(163,107,0,0.18);
+  --red:#c0392b;--red-dim:rgba(192,57,43,0.08);
+  --green:#1e7e34;--green-dim:rgba(30,126,52,0.08);
+  --blue:#006298;--cyan:rgba(0,98,152,0.05);
+  --muted:#8a8580;--dim:#e5e3e0;--text:#1a1a2e;--text2:#4c4845;
   --display:'Bebas Neue',sans-serif;--mono:'IBM Plex Mono',monospace;--body:'IBM Plex Sans',sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--body);overflow-x:hidden;overflow-y:auto;}
 body::before{content:'';position:fixed;inset:0;
-  background-image:linear-gradient(rgba(153,0,0,0.03) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(153,0,0,0.03) 1px,transparent 1px);
+  background-image:linear-gradient(rgba(153,0,0,0.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(153,0,0,0.025) 1px,transparent 1px);
   background-size:56px 56px;pointer-events:none;z-index:0;}
 .screen{position:absolute;inset:0;display:none;flex-direction:column;overflow-y:auto;overflow-x:hidden;z-index:1;}
 .screen.active{display:flex;}
@@ -37,23 +37,23 @@ body::before{content:'';position:fixed;inset:0;
 button{cursor:pointer;border:none;font-family:var(--body);transition:all 0.15s;}
 .btn{padding:10px 22px;font-weight:600;font-size:0.88rem;border-radius:3px;letter-spacing:0.02em;}
 .btn-crimson{background:var(--crimson);color:var(--cream);}.btn-crimson:hover{background:var(--crimson-light);box-shadow:0 0 20px var(--crimson-glow);}
-.btn-ghost{background:transparent;color:var(--text2);border:1px solid var(--rim2);}.btn-ghost:hover{border-color:var(--crimson);color:var(--gold);}
+.btn-ghost{background:transparent;color:var(--text2);border:1px solid var(--rim2);}.btn-ghost:hover{border-color:var(--crimson);color:var(--crimson);}
 .btn-green{background:var(--green);color:#08090c;}.btn-green:hover{background:#08e8ad;}
 .btn-lg{padding:14px 38px;font-size:1rem;letter-spacing:0.04em;}
 .btn-sm{padding:6px 14px;font-size:0.78rem;}
 .btn-dis{opacity:0.35;pointer-events:none;}
-input{font-family:var(--body);background:var(--surface);border:1px solid var(--rim2);color:var(--text);padding:10px 14px;border-radius:3px;font-size:0.92rem;outline:none;transition:border-color 0.2s;}
+input{font-family:var(--body);background:#ffffff;border:1px solid var(--rim);color:var(--text);padding:10px 14px;border-radius:3px;font-size:0.92rem;outline:none;transition:border-color 0.2s;}
 input:focus{border-color:var(--crimson);box-shadow:0 0 0 2px var(--crimson-dim);}
 input::placeholder{color:var(--muted);}
 .card{background:var(--panel);border:1px solid var(--rim);border-radius:4px;padding:20px;}
 ::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-track{background:transparent;}::-webkit-scrollbar-thumb{background:var(--rim2);border-radius:2px;}
-.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--panel);border:1px solid var(--rim2);color:var(--text);padding:12px 22px;border-radius:4px;font-size:0.86rem;z-index:10000;transition:transform 0.25s ease;box-shadow:0 8px 32px rgba(0,0,0,0.6);white-space:nowrap;}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--panel);border:1px solid var(--rim);color:var(--text);padding:12px 22px;border-radius:4px;font-size:0.86rem;z-index:10000;transition:transform 0.25s ease;box-shadow:0 4px 20px rgba(0,0,0,0.12);white-space:nowrap;}
 .toast.show{transform:translateX(-50%) translateY(0);}
 
 /* HOME */
 #screen-home{align-items:center;justify-content:center;text-align:center;}
 .logo-big{font-family:var(--display);font-size:clamp(3rem,10vw,6.5rem);letter-spacing:0.05em;line-height:1;}
-.logo-big span{color:var(--gold);}
+.logo-big span{color:var(--crimson);}
 .role-grid{display:flex;flex-direction:column;gap:10px;width:100%;max-width:340px;margin:0 auto;}
 .role-card{background:var(--panel);border:1px solid var(--rim);border-radius:5px;padding:18px 22px;display:flex;align-items:center;gap:16px;text-align:left;cursor:pointer;transition:all 0.18s;}
 .role-card:hover{border-color:var(--crimson);transform:translateX(4px);background:var(--crimson-dim);}
@@ -70,7 +70,7 @@ input::placeholder{color:var(--muted);}
 
 /* LOBBY */
 .lobby-wrap{width:100%;max-width:780px;position:relative;z-index:1;}
-.code-display{font-family:var(--display);font-size:clamp(2.4rem,8vw,4rem);letter-spacing:0.35em;color:var(--gold);text-shadow:0 0 40px var(--crimson-glow);}
+.code-display{font-family:var(--display);font-size:clamp(2.4rem,8vw,4rem);letter-spacing:0.35em;color:var(--crimson);text-shadow:0 0 30px var(--crimson-glow);}
 .teams-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin-bottom:28px;}
 .team-chip{background:var(--surface);border:1px solid var(--rim);border-radius:4px;padding:10px 12px;display:flex;align-items:center;gap:9px;animation:sUp 0.3s ease;}
 .team-chip-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
@@ -86,7 +86,7 @@ input::placeholder{color:var(--muted);}
 .round-header{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:16px;}
 .rn{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
 .round-title{font-family:var(--display);font-size:clamp(1.6rem,5vw,2.4rem);text-transform:uppercase;letter-spacing:0.04em;line-height:1;}
-.timer{font-family:var(--mono);font-size:1.2rem;font-weight:700;color:var(--gold);background:var(--crimson-dim);border:1px solid rgba(255,170,0,0.22);padding:7px 16px;border-radius:3px;min-width:76px;text-align:center;}
+.timer{font-family:var(--mono);font-size:1.2rem;font-weight:700;color:var(--crimson);background:var(--crimson-dim);border:1px solid rgba(153,0,0,0.2);padding:7px 16px;border-radius:3px;min-width:76px;text-align:center;}
 .timer.urgent{color:#ff5555;background:rgba(255,85,85,0.1);border-color:rgba(255,85,85,0.3);animation:tf 0.55s infinite;}
 @keyframes tf{0%,100%{opacity:1;}50%{opacity:0.5;}}
 .scenario{background:var(--cyan);border:1px solid rgba(72,202,228,0.18);border-radius:4px;padding:14px 16px;margin-bottom:18px;}
@@ -114,12 +114,12 @@ input::placeholder{color:var(--muted);}
 
 /* GHOST (R1 choice shown in R2) */
 .ghost-bar{background:rgba(153,0,0,0.06);border:1px solid rgba(153,0,0,0.15);border-radius:3px;padding:8px 12px;margin-bottom:14px;font-family:var(--mono);font-size:0.7rem;color:var(--muted);}
-.ghost-bar strong{color:var(--gold);}
+.ghost-bar strong{color:var(--crimson);}
 
 /* DATA REVEAL */
 .data-panel{background:var(--panel);border:1px solid var(--rim);border-radius:5px;padding:20px;margin-bottom:16px;opacity:0;transform:translateY(20px);transition:all 0.6s ease;}
 .data-panel.visible{opacity:1;transform:none;}
-.data-title{font-family:var(--display);font-size:1.1rem;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:12px;color:var(--gold);}
+.data-title{font-family:var(--display);font-size:1.1rem;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:12px;color:var(--crimson);}
 .data-source{font-family:var(--mono);font-size:0.56rem;color:var(--muted);margin-top:10px;}
 .bar-h{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
 .bar-h-label{font-size:0.78rem;min-width:140px;color:var(--text2);}
@@ -129,7 +129,7 @@ input::placeholder{color:var(--muted);}
 .data-table{width:100%;border-collapse:collapse;font-size:0.78rem;}
 .data-table th{font-family:var(--mono);font-size:0.54rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);padding:6px 8px;text-align:left;border-bottom:1px solid var(--rim);}
 .data-table td{padding:7px 8px;border-bottom:1px solid var(--dim);color:var(--text2);}
-.data-table .sweet{color:var(--gold);font-weight:600;}
+.data-table .sweet{color:var(--crimson);font-weight:600;}
 .data-note{font-size:0.74rem;color:var(--text2);line-height:1.5;margin-top:10px;padding:8px 12px;background:var(--surface);border-radius:3px;}
 
 /* WAITING */
@@ -181,14 +181,14 @@ input::placeholder{color:var(--muted);}
 .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:24px;}
 @media(max-width:500px){.stats-grid{grid-template-columns:1fr;}}
 .stat-card{background:var(--surface);border:1px solid var(--rim);border-radius:4px;padding:14px;text-align:center;}
-.stat-val{font-family:var(--display);font-size:2.4rem;color:var(--gold);}
+.stat-val{font-family:var(--display);font-size:2.4rem;color:var(--crimson);}
 .stat-label{font-family:var(--mono);font-size:0.56rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-top:4px;}
 
 /* DEBRIEF */
 .debrief-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:20px;}
 .debrief-item{background:var(--surface);border:1px solid var(--rim);border-radius:4px;padding:14px;}
 .debrief-icon{font-size:1.2rem;margin-bottom:6px;}
-.debrief-label{font-family:var(--mono);font-size:0.56rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:5px;}
+.debrief-label{font-family:var(--mono);font-size:0.56rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--crimson);margin-bottom:5px;}
 .debrief-text{font-size:0.76rem;color:var(--text2);line-height:1.55;}
 
 /* AUTO-SUBMIT BANNER */
@@ -279,7 +279,7 @@ input::placeholder{color:var(--muted);}
         </div>
       </div>
       <div style="background:rgba(153,0,0,0.05);border:1px solid rgba(153,0,0,0.18);border-radius:5px;padding:18px 22px;margin-bottom:24px;">
-        <div style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">🧪 How It Works</div>
+        <div style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--crimson);margin-bottom:8px;">🧪 How It Works</div>
         <div style="font-size:0.82rem;color:var(--text2);line-height:1.7;">
           <strong style="color:var(--text);">Round 1 (60 sec):</strong> Teams pick a product, price, and channel based on GUT INSTINCT only — no data.<br>
           <strong style="color:var(--text);">Data Reveal:</strong> You reveal real market research. Students see what the data says.<br>
@@ -306,7 +306,7 @@ input::placeholder{color:var(--muted);}
         <div style="font-family:var(--mono);font-size:0.65rem;color:var(--muted);margin-top:4px;">Code: <span id="stu-code">—</span></div>
       </div>
       <div style="background:rgba(153,0,0,0.05);border:1px solid rgba(153,0,0,0.18);border-radius:5px;padding:18px 22px;margin-bottom:24px;text-align:left;">
-        <div style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">🧪 The Challenge</div>
+        <div style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--crimson);margin-bottom:8px;">🧪 The Challenge</div>
         <div style="font-size:0.82rem;color:var(--text2);line-height:1.7;">You're launching a new functional beverage brand. First, you'll decide on instinct alone. Then, real market data drops — and you get to change your mind. Can data improve your decisions? Let's find out.</div>
       </div>
       <div class="label-sm" style="margin:20px 0 12px;text-align:left;">Teams Joined</div>
@@ -349,7 +349,7 @@ input::placeholder{color:var(--muted);}
   <div class="round-wrap" style="max-width:820px;">
     <div style="text-align:center;margin-bottom:24px;">
       <div class="badge badge-rnd" style="margin:0 auto 12px;display:inline-flex;">📊 Data Drop</div>
-      <h2 style="font-family:var(--display);font-size:clamp(2rem,6vw,3rem);text-transform:uppercase;letter-spacing:0.04em;line-height:1;">The Research<br><span style="color:var(--gold);">Is In</span></h2>
+      <h2 style="font-family:var(--display);font-size:clamp(2rem,6vw,3rem);text-transform:uppercase;letter-spacing:0.04em;line-height:1;">The Research<br><span style="color:var(--crimson);">Is In</span></h2>
       <p style="color:var(--text2);font-size:0.84rem;margin-top:8px;">Here's what the market data says. Does it change your mind?</p>
     </div>
     <div class="data-panel" id="dp1">
@@ -429,13 +429,13 @@ input::placeholder{color:var(--muted);}
 <div id="screen-final" class="screen">
   <div class="results-wrap">
     <div class="instr-panel" id="final-instr-panel" style="display:none;">
-      <div><div style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);">🎓 Session Complete</div></div>
+      <div><div style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--crimson);">🎓 Session Complete</div></div>
       <button class="btn btn-ghost" onclick="go('home')">New Session</button>
     </div>
     <div style="text-align:center;margin-bottom:8px;">
       <div class="badge badge-live" style="margin:0 auto;display:inline-flex;">Final Results</div>
     </div>
-    <h1 style="font-family:var(--display);font-size:clamp(2.2rem,7vw,4rem);text-transform:uppercase;letter-spacing:0.04em;text-align:center;line-height:0.9;margin-bottom:6px;">Gut vs. Data<br><span style="color:var(--gold);">The Verdict</span></h1>
+    <h1 style="font-family:var(--display);font-size:clamp(2.2rem,7vw,4rem);text-transform:uppercase;letter-spacing:0.04em;text-align:center;line-height:0.9;margin-bottom:6px;">Gut vs. Data<br><span style="color:var(--crimson);">The Verdict</span></h1>
     <p style="text-align:center;color:var(--text2);font-size:0.84rem;margin-bottom:20px;">Did data improve your decisions?</p>
 
     <div class="slabel">Class-Wide Impact</div>
@@ -737,14 +737,14 @@ function updateDataInstrPanel(panels){
   if(S.dataStep<panels.length){
     el.innerHTML=`
       <div class="instr-panel" style="margin-top:16px;">
-        <div><div style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);">🎓 Instructor</div>
+        <div><div style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--crimson);">🎓 Instructor</div>
         <div style="font-size:0.78rem;color:var(--muted);margin-top:4px;">Reveal data panel ${S.dataStep+1} of ${panels.length}</div></div>
         <button class="btn btn-crimson btn-sm" onclick="revealNextData()">Reveal Next 📊</button>
       </div>`;
   } else {
     el.innerHTML=`
       <div class="instr-panel" style="margin-top:16px;">
-        <div><div style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);">🎓 All Data Revealed</div>
+        <div><div style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--crimson);">🎓 All Data Revealed</div>
         <div style="font-size:0.78rem;color:var(--muted);margin-top:4px;">Discuss the data, then open Round 2</div></div>
         <button class="btn btn-crimson" onclick="openRound2()">Open Round 2 →</button>
       </div>`;
@@ -785,7 +785,7 @@ function buildR2(){
   // Compact data summary for R2
   document.getElementById('r2-data-panels').innerHTML=`
     <details open style="margin-bottom:10px;">
-      <summary style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);cursor:pointer;margin-bottom:8px;">📊 Market Data (tap to collapse)</summary>
+      <summary style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--crimson);cursor:pointer;margin-bottom:8px;">📊 Market Data (tap to collapse)</summary>
       <div style="display:grid;grid-template-columns:1fr;gap:8px;">
         <div style="background:var(--surface);border:1px solid var(--rim);border-radius:3px;padding:10px 12px;">
           <div style="font-family:var(--mono);font-size:0.56rem;color:var(--muted);margin-bottom:6px;">CONSUMER INTEREST</div>
@@ -877,7 +877,7 @@ function buildInstrWait(round){
   const nextLabel=round===1?'Reveal Data 📊':'Show Final Results 🏆';
   el.innerHTML=`
     <div style="background:rgba(153,0,0,0.06);border:1px solid rgba(153,0,0,0.18);border-radius:4px;padding:16px 20px;margin-top:24px;width:100%;max-width:380px;">
-      <div class="label-xs" style="color:var(--gold);margin-bottom:12px;">🎓 Instructor — advance when ready</div>
+      <div class="label-xs" style="color:var(--crimson);margin-bottom:12px;">🎓 Instructor — advance when ready</div>
       <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
         <button class="btn btn-green btn-sm" onclick="${round===1?'triggerDataReveal()':'computeAndShowFinal()'}">
           ${nextLabel}</button>
